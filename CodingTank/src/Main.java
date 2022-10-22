@@ -24,8 +24,8 @@ public class Main {
         }
 
         for (i = 0; i < n; i++) {
-            System.out.printf("Temperatura Original: %.2f %s\t\t ", arrayTemperature[i], unitInput);
-            System.out.printf("Temperatura Transformada:  %.2f %s\n", arrayNewTemperature[i], unitOutput);
+            System.out.printf("Temperatura Original: %.2f%s\t\t ", arrayTemperature[i], unitInput);
+            System.out.printf("Temperatura Transformada:  %.2f%s\n", arrayNewTemperature[i], unitOutput);
         }
 
         System.out.printf("\nA média das temperaturas originais foi: %.2f%s\n", average(arrayTemperature), unitInput);
@@ -33,17 +33,19 @@ public class Main {
     }
     public static double temperatureConverter(double temperature, String unitInput, String unitOutput)
     {
+        if(unitInput.equals(unitOutput))
+            return(temperature);
         if(unitInput.equals("C") && unitOutput.equals("F"))
             return (CelsiusToFahrenheit(temperature));
-        if(unitInput.equals("F") && unitOutput.equals("C"))
+        else if(unitInput.equals("F") && unitOutput.equals("C"))
             return (FahrenheitToCelsius(temperature));
-        if(unitInput.equals("C") && unitOutput.equals("K"))
+        else if(unitInput.equals("C") && unitOutput.equals("K"))
             return (CelsiusToKelvin(temperature));
-        if(unitInput.equals("K") && unitOutput.equals("C"))
+        else if(unitInput.equals("K") && unitOutput.equals("C"))
             return (KelvinToCelsius(temperature));
-        if(unitInput.equals("K") && unitOutput.equals("F"))
+        else if(unitInput.equals("K") && unitOutput.equals("F"))
             return (CelsiusToFahrenheit(KelvinToCelsius(temperature)));
-        if(unitInput.equals("F") && unitOutput.equals("K"))
+        else if(unitInput.equals("F") && unitOutput.equals("K"))
             return (CelsiusToKelvin(FahrenheitToCelsius(temperature)));
         else
             return(-1);
