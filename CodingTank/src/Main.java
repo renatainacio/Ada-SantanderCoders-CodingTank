@@ -12,6 +12,11 @@ public class Main {
         System.out.println("Escolha a unidade a ser transformada. " +
                 "Digite C para Celsius, K para Kelvin e F para Fahrenheit:");
         String unitOutput = input.next();
+        if(!"CKF".contains(unitInput) || !"CKF".contains(unitOutput))
+        {
+            System.out.println("A unidade de temperatura informada não é válida e o programa será encerrado.");
+            return;
+        }
         int i;
         double[] arrayTemperature = new double[n];
         for(i = 0; i < n; i++) {
@@ -48,7 +53,7 @@ public class Main {
         else if(unitInput.equals("F") && unitOutput.equals("K"))
             return (CelsiusToKelvin(FahrenheitToCelsius(temperature)));
         else
-            return(-1);
+            return(temperature);
     }
 
     public static double CelsiusToKelvin(double temperature){
