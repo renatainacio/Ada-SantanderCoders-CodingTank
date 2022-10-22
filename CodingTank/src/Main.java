@@ -28,8 +28,8 @@ public class Main {
             System.out.printf("Temperatura Transformada:  %.2f %s\n", arrayNewTemperature[i], unitOutput);
         }
 
-        System.out.printf("\nA média das temperaturas originais foi: %.2f\n", average(arrayTemperature));
-        System.out.printf("A média das temperaturas transformadas foi: %.2f\n", average(arrayNewTemperature));
+        System.out.printf("\nA média das temperaturas originais foi: %.2f%s\n", average(arrayTemperature), unitInput);
+        System.out.printf("A média das temperaturas transformadas foi: %.2f%s\n", average(arrayNewTemperature), unitOutput);
     }
     public static double temperatureConverter(double temperature, String unitInput, String unitOutput)
     {
