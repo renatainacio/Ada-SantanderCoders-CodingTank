@@ -4,37 +4,40 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
-        System.out.println("Informe quantas temperaturas deseja converter:");
-        int n = input.nextInt();
-        System.out.println("Escolha a unidade de origem das temperaturas. " +
-                "Digite C para Celsius, K para Kelvin e F para Fahrenheit:");
-        String unitInput = input.next();
-        System.out.println("Escolha a unidade a ser transformada. " +
-                "Digite C para Celsius, K para Kelvin e F para Fahrenheit:");
-        String unitOutput = input.next();
-        if(!"CKF".contains(unitInput) || !"CKF".contains(unitOutput))
-        {
-            System.out.println("A unidade de temperatura informada não é válida e o programa será encerrado.");
-            return;
-        }
-        int i;
-        double[] arrayTemperature = new double[n];
-        for(i = 0; i < n; i++) {
-            System.out.println("Digite uma temperatura para ser convetida (use apenas números)");
-            arrayTemperature[i] = input.nextDouble();
-        }
-        double[]arrayNewTemperature = new double[n];
-        for(i = 0; i < n; i++){
-            arrayNewTemperature[i] = temperatureConverter(arrayTemperature[i], unitInput, unitOutput);
-        }
+        try {
+            System.out.println("Informe quantas temperaturas deseja converter:");
+            int n = input.nextInt();
+            System.out.println("Escolha a unidade de origem das temperaturas. " +
+                    "Digite C para Celsius, K para Kelvin e F para Fahrenheit:");
+            String unitInput = input.next();
+            System.out.println("Escolha a unidade a ser transformada. " +
+                    "Digite C para Celsius, K para Kelvin e F para Fahrenheit:");
+            String unitOutput = input.next();
+            if (!"CKF".contains(unitInput) || !"CKF".contains(unitOutput)) {
+                System.out.println("A unidade de temperatura informada não é válida e o programa será encerrado.");
+                return;
+            }
+            int i;
+            double[] arrayTemperature = new double[n];
+            for (i = 0; i < n; i++) {
+                System.out.println("Digite uma temperatura para ser convetida (use apenas números)");
+                arrayTemperature[i] = input.nextDouble();
+            }
+            double[] arrayNewTemperature = new double[n];
+            for (i = 0; i < n; i++) {
+                arrayNewTemperature[i] = temperatureConverter(arrayTemperature[i], unitInput, unitOutput);
+            }
 
-        for (i = 0; i < n; i++) {
-            System.out.printf("Temperatura Original: %.2f%s\t\t ", arrayTemperature[i], unitInput);
-            System.out.printf("Temperatura Transformada:  %.2f%s\n", arrayNewTemperature[i], unitOutput);
-        }
+            for (i = 0; i < n; i++) {
+                System.out.printf("Temperatura Original: %.2f%s\t\t ", arrayTemperature[i], unitInput);
+                System.out.printf("Temperatura Transformada:  %.2f%s\n", arrayNewTemperature[i], unitOutput);
+            }
 
-        System.out.printf("\nA média das temperaturas originais foi: %.2f%s\n", average(arrayTemperature), unitInput);
-        System.out.printf("A média das temperaturas transformadas foi: %.2f%s\n", average(arrayNewTemperature), unitOutput);
+            System.out.printf("\nA média das temperaturas originais foi: %.2f%s\n", average(arrayTemperature), unitInput);
+            System.out.printf("A média das temperaturas transformadas foi: %.2f%s\n", average(arrayNewTemperature), unitOutput);
+        } catch(Exception e){
+            System.out.println("Ocorreu um erro e o programa será encerrado");
+        }
     }
     public static double temperatureConverter(double temperature, String unitInput, String unitOutput)
     {
